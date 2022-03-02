@@ -45,7 +45,6 @@ const reset = (l?: number, mt?: number) => {
   document
     .querySelector<HTMLSelectElement>('#tr')
     .children[trA[tr] || 0].setAttribute('selected', 'true');
-  console.log(guessedNumber);
 };
 const checkGuess = () => {
   let inputValue: number = Number(document.querySelector<HTMLInputElement>('#in').value);

@@ -43,7 +43,6 @@ var reset = function (l, mt) {
     document
         .querySelector('#tr')
         .children[trA[tr] || 0].setAttribute('selected', 'true');
-    console.log(guessedNumber);
 };
 var checkGuess = function () {
     var inputValue = Number(document.querySelector('#in').value);
