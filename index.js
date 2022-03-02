@@ -16,14 +16,18 @@ var setStatus = function (msg) {
     document.getElementById('st').innerHTML = msg;
 };
 var setHighScore = function (score) {
-    var ls = sessionStorage.getItem('hs');
+    var ls = localStorage.getItem('hs');
     var hs = Math.max(score || 0, Number(ls)).toString();
-    sessionStorage.setItem('hs', hs);
+    localStorage.setItem('hs', hs);
     document.getElementById('hs').innerHTML = 'Your High score is: ' + hs;
 };
 var reset = function (l, mt) {
-    var lim = sessionStorage.getItem('lim');
-    var tr = sessionStorage.getItem('tr');
+    if (!localStorage.getItem('lim') || !localStorage.getItem('tr')) {
+        localStorage.setItem('lim', '100');
+        localStorage.setItem('tr', '10');
+    }
+    var lim = localStorage.getItem('lim');
+    var tr = localStorage.getItem('tr');
     limit = l || Number(lim);
     guessedNumber = Math.ceil(Math.random() * limit);
     min = 0;
@@ -35,10 +39,10 @@ var reset = function (l, mt) {
     setStatus("Max " + maxTries + " tries");
     document
         .querySelector('#lim')
-        .children[limA[lim]].setAttribute('selected', 'true');
+        .children[limA[lim] || 0].setAttribute('selected', 'true');
     document
         .querySelector('#tr')
-        .children[trA[tr]].setAttribute('selected', 'true');
+        .children[trA[tr] || 0].setAttribute('selected', 'true');
     console.log(guessedNumber);
 };
 var checkGuess = function () {
@@ -81,11 +85,11 @@ var checkGuess = function () {
 //event listeners
 document.querySelector('#lim').addEventListener('change', function () {
     reset(Number(this.value));
-    sessionStorage.setItem('lim', this.value);
+    localStorage.setItem('lim', this.value);
 });
 document.querySelector('#tr').addEventListener('change', function () {
     reset(null, Number(this.value));
-    sessionStorage.setItem('tr', this.value);
+    localStorage.setItem('tr', this.value);
 });
 document.querySelector('#btn').addEventListener('click', checkGuess);
 window.addEventListener('load', function () {

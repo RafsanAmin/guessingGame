@@ -23,6 +23,10 @@ const setHighScore = (score?: number) => {
   document.getElementById('hs').innerHTML = 'Your High score is: ' + hs;
 };
 const reset = (l?: number, mt?: number) => {
+  if (!localStorage.getItem('lim') || !localStorage.getItem('tr')) {
+    localStorage.setItem('lim', '100');
+    localStorage.setItem('tr', '10');
+  }
   let lim = localStorage.getItem('lim');
   let tr = localStorage.getItem('tr');
   limit = l || Number(lim);
@@ -34,12 +38,13 @@ const reset = (l?: number, mt?: number) => {
   gameOver = false;
   setSpan();
   setStatus(`Max ${maxTries} tries`);
+
   document
     .querySelector<HTMLSelectElement>('#lim')
-    .children[limA[lim]].setAttribute('selected', 'true');
+    .children[limA[lim] || 0].setAttribute('selected', 'true');
   document
     .querySelector<HTMLSelectElement>('#tr')
-    .children[trA[tr]].setAttribute('selected', 'true');
+    .children[trA[tr] || 0].setAttribute('selected', 'true');
   console.log(guessedNumber);
 };
 const checkGuess = () => {
