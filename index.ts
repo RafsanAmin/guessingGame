@@ -1,3 +1,4 @@
+//made by HRM Rafsan Amin
 const limA = { '100': 0, '50': 1, '20': 2 };
 const trA = { '10': 0, '1': 1, '5': 2, '20': 3 };
 
