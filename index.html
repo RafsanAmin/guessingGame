@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guessing Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  </head>
+  <style>
+    * {
+      font-family: sans-serif;
+      font-size: 1.25rem;
+    }
+    #st {
+      font-weight: 600;
+    }
+  </style>
+  <body>
+    <fieldset>
+      <legend>Settings!!</legend>
+      <span>Limit</span>
+      <select id="lim">
+        <option value="100">100</option>
+        <option value="50">50</option>
+        <option value="20">200</option>
+      </select>
+      <br />
+      <span>Max Tries</span>
+      <select id="tr">
+        <option value="10">10</option>
+        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="20">20</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <legend>Game!!</legend>
+      <h1>Guess my choosen number</h1>
+      <p id="hs"></p>
+      <p id="st"></p>
+      <p>Guess Number Between <span id="s"></span></p>
+      <input id="in" type="text" />
+      <button id="btn">Guess</button>
+      <br />
+    </fieldset>
+    <br />
+    <br />
+    <br />
+    <button onclick="reset()">Reset</button>
+  </body>
+  <script src="index.js"></script>
+</html>
