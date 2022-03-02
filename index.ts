@@ -17,14 +17,14 @@ const setStatus = (msg: string) => {
   document.getElementById('st').innerHTML = msg;
 };
 const setHighScore = (score?: number) => {
-  let ls = localStorage.getItem('hs');
+  let ls = sessionStorage.getItem('hs');
   let hs = Math.max(score || 0, Number(ls)).toString();
-  localStorage.setItem('hs', hs);
+  sessionStorage.setItem('hs', hs);
   document.getElementById('hs').innerHTML = 'Your High score is: ' + hs;
 };
 const reset = (l?: number, mt?: number) => {
-  let lim = localStorage.getItem('lim');
-  let tr = localStorage.getItem('tr');
+  let lim = sessionStorage.getItem('lim');
+  let tr = sessionStorage.getItem('tr');
   limit = l || Number(lim);
   guessedNumber = Math.ceil(Math.random() * limit);
   min = 0;
@@ -77,11 +77,11 @@ const checkGuess = () => {
 //event listeners
 document.querySelector<HTMLSelectElement>('#lim').addEventListener('change', function () {
   reset(Number(this.value));
-  localStorage.setItem('lim', this.value);
+  sessionStorage.setItem('lim', this.value);
 });
 document.querySelector<HTMLSelectElement>('#tr').addEventListener('change', function () {
   reset(null, Number(this.value));
-  localStorage.setItem('tr', this.value);
+  sessionStorage.setItem('tr', this.value);
 });
 
 document.querySelector('#btn').addEventListener('click', checkGuess);

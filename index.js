@@ -1,3 +1,4 @@
+//made by HRM Rafsan Amin
 var limA = { '100': 0, '50': 1, '20': 2 };
 var trA = { '10': 0, '1': 1, '5': 2, '20': 3 };
 var limit;
@@ -15,14 +16,14 @@ var setStatus = function (msg) {
     document.getElementById('st').innerHTML = msg;
 };
 var setHighScore = function (score) {
-    var ls = localStorage.getItem('hs');
+    var ls = sessionStorage.getItem('hs');
     var hs = Math.max(score || 0, Number(ls)).toString();
-    localStorage.setItem('hs', hs);
+    sessionStorage.setItem('hs', hs);
     document.getElementById('hs').innerHTML = 'Your High score is: ' + hs;
 };
 var reset = function (l, mt) {
-    var lim = localStorage.getItem('lim');
-    var tr = localStorage.getItem('tr');
+    var lim = sessionStorage.getItem('lim');
+    var tr = sessionStorage.getItem('tr');
     limit = l || Number(lim);
     guessedNumber = Math.ceil(Math.random() * limit);
     min = 0;
@@ -80,11 +81,11 @@ var checkGuess = function () {
 //event listeners
 document.querySelector('#lim').addEventListener('change', function () {
     reset(Number(this.value));
-    localStorage.setItem('lim', this.value);
+    sessionStorage.setItem('lim', this.value);
 });
 document.querySelector('#tr').addEventListener('change', function () {
     reset(null, Number(this.value));
-    localStorage.setItem('tr', this.value);
+    sessionStorage.setItem('tr', this.value);
 });
 document.querySelector('#btn').addEventListener('click', checkGuess);
 window.addEventListener('load', function () {
