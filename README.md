@@ -1,3 +1,5 @@
 # It is a number guessing game!
 
-To play, goto <a href="https://rafsanamin.github.io/guessingGame/">Click Here!</a>
+To play, download and open HTML.
+
+To Download, <a href="https://github.com/RafsanAmin/guessingGame/archive/refs/heads/master.zip">Click Here!</a>
