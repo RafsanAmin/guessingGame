@@ -52,7 +52,7 @@ const checkGuess = () => {
   let left = ' Total Left ' + (maxTries - tries) + ' Tries';
   if (gameOver) {
     setStatus('Game is Over!! ⚠️ Click on reset!');
-  } else if (tries >= maxTries && inputValue !== guessedNumber) {
+  } else if ((tries >= maxTries || (max - min <= 2)) && inputValue !== guessedNumber) {
     setStatus('Wrong!! ❌ Wrong Input. Answer was ' + guessedNumber);
     alert('Game Over!!');
     gameOver = true;
