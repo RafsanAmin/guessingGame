@@ -50,15 +50,17 @@ const checkGuess = () => {
   let inputValue: number = Number(document.querySelector<HTMLInputElement>('#in').value);
   tries++;
   let left = ' Total Left ' + (maxTries - tries) + ' Tries';
+  console.log(max - min);
   if (gameOver) {
     setStatus('Game is Over!! ⚠️ Click on reset!');
-  } else if ((tries >= maxTries || (max - min <= 2)) && inputValue !== guessedNumber) {
-    setStatus('Wrong!! ❌ Wrong Input. Answer was ' + guessedNumber);
+  } else if ((tries >= maxTries && inputValue !== guessedNumber) || max - min <= 2) {
+    setStatus('Wrong!! ❌ Wrong Input or limit too close. Answer was ' + guessedNumber);
     alert('Game Over!!');
     gameOver = true;
   } else {
     if (inputValue === guessedNumber) {
-      let score = Math.ceil((maxTries - tries + 1) * 100 * maxTries ** -1) + (20 - maxTries);
+      let score =
+        Math.ceil((maxTries - tries + 1) * 100 * maxTries ** -1) + (20 - maxTries) * 10 + limit / 5;
       setStatus('Right!!✅' + '. Your score is: ' + score);
       setHighScore(score);
       gameOver = true;
